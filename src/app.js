@@ -38,8 +38,20 @@ app.get("/help", (req, res) => {
   })
 })
 
+app.get("/help/*", (req, res) => {
+  res.render("error", {
+    message: "ERROR 404! Help article not found.",
+    title: "404",
+    name: "James Lopez",
+  })
+})
+
 app.get("*", (req, res) => {
-  res.send("My 404 page")
+  res.render("error", {
+    message: "ERROR 404! Page not found.",
+    title: "404",
+    name: "James Lopez",
+  })
 })
 
 app.listen(3000, () => {
